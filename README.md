@@ -36,6 +36,8 @@
 ### 3. Execute a aplicação via Visual Studio ou com o comando:
 	dotnet run
 
+**As funcionalidades em Docker deste projeto preveem a inclusão de um banco de dados MySQL nos containers. No entanto, essa funcionalidade ainda não foi completamente implementada. Por isso, recomenda-se executar o projeto diretamente, sem utilizar as instâncias Docker.**
+
 ## 📁 Estrutura do Projeto
 - Controllers/HomeController.cs — Controlador principal com lógica de interação com o modelo de linguagem.
 - Views/Home/Index.cshtml — Página principal para entrada de dados e visualização de resultados.
