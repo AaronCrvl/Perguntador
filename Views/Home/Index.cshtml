@@ -1,0 +1,145 @@
+﻿@model string
+@{
+    ViewData["Title"] = "Home";
+}
+
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f5f7fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-container {
+        max-width: 700px;
+        margin: 3rem auto;
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+        .form-container h1 {
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: #444;
+    }
+
+    select, input[type="text"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+        text-align: center;
+    }
+
+        input[type="text"]:focus, select:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+    input[type="submit"] {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 1rem;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+    .result-box {
+        margin-top: 2rem;
+        padding: 1rem;
+        background-color: #e9f5ff;
+        border-left: 5px solid #007BFF;
+        border-radius: 8px;
+        color: #333;
+    }
+
+    .form-section {
+        display: none;
+    }
+
+</style>
+
+<div class="form-container text-center">
+    <h1 class="display-4">Bem-vindo!</h1>
+
+    <!-- Selection Dropdown -->
+    <label for="formSelector">Escolha o que deseja gerar:</label>
+    <select id="formSelector" name="selecao">
+        <option value="">-- Selecione --</option>
+        <option value="entrevista">Perguntas para Entrevista</option>
+        <option value="resumo">Resumo de Texto</option>
+        <option value="codigo">Código</option>
+    </select>
+
+    <!-- Form 1: Entrevista -->
+    <form id="form-entrevista" class="form-section" method="post" action="Home/GerarConteudo">
+        <input type="hidden" name="selecao" value="1" />
+        <label for="assuntoInput">Assunto principal da entrevista:</label>
+        <input name="assuntoInput" type="text" placeholder="Ex: Inteligência Artificial" />
+
+        <label for="topicoInput">Tópicos relacionados:</label>
+        <input name="topicoInput" type="text" placeholder="Ex: Machine Learning, Deep Learning..." />
+
+        <input type="submit" value="Gerar Perguntas" />
+    </form>
+
+    <!-- Form 2: Resumo de Texto -->
+    <form id="form-resumo" class="form-section" method="post" action="Home/GerarConteudo">
+        <input type="hidden" name="selecao" value="2" />
+        <label for="textoResumo">Texto a ser resumido:</label>
+        <input name="textoResumo" type="text" placeholder="Cole aqui o texto para resumo..." />
+
+        <input type="submit" value="Gerar Resumo" />
+    </form>
+
+    <!-- Form 3: Geração de Código -->
+    <form id="form-codigo" class="form-section" method="post" action="Home/GerarConteudo">
+        <input type="hidden" name="selecao" value="3" />
+        <label for="descricaoCodigo">Descrição da funcionalidade:</label>
+        <input name="descricaoCodigo" type="text" placeholder="Ex: Criar um controlador de API REST em ASP.NET Core..." />
+
+        <input type="submit" value="Gerar Código" />
+    </form>
+
+    @if (!string.IsNullOrEmpty(Model))
+    {
+        <div class="result-box">
+            <pre>@Model</pre>
+        </div>
+    }
+</div>
+
+<script>
+    const selector = document.getElementById("formSelector");
+    const sections = document.querySelectorAll(".form-section");
+
+    selector.addEventListener("change", function () {
+        sections.forEach(s => s.style.display = "none");
+
+        if (this.value) {
+            const selectedForm = document.getElementById("form-" + this.value);
+            if (selectedForm) {
+                selectedForm.style.display = "block";
+            }
+        }
+    });
+</script>
