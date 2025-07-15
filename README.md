@@ -46,3 +46,9 @@
 ## 📌 Observações
 A chave da API HuggingFace deve ser mantida em segredo. Idealmente, utilize appsettings.json ou variáveis de ambiente para isso.
 O projeto atual utiliza chamadas síncronas à API e pode ser ajustado para melhorar desempenho e segurança.
+
+
+## Prints
+<img width="1598" height="786" alt="image" src="https://github.com/user-attachments/assets/72bcd870-d507-44c0-8e25-93f9f2468668" />
+<img width="1598" height="786" alt="image" src="https://github.com/user-attachments/assets/91f3c251-341a-4d3b-9ac8-9324bee3b475" />
+<img width="1598" height="786" alt="image" src="https://github.com/user-attachments/assets/765bdd45-84d3-41d7-9095-08c5df13fa59" />
